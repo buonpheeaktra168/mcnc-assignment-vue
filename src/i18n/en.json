@@ -1,0 +1,11 @@
+{
+    "navbar": {
+        "home": "Home",
+        "about": "About",
+        "account": "Account",
+        "button": {
+            "khmer": "ភាសាខ្មែរ",
+            "english": "English"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "navbar": {
+        "home": "ទំព័រដើម",
+        "about": "អំពី",
+        "account": "គណនី",
+        "button": {
+            "khmer": "ភាសាខ្មែរ",
+            "english": "English"
+        }
+    }
+}
