@@ -6,9 +6,10 @@
           <router-link to="/">{{ $t("navbar.home") }}</router-link>
           <router-link to="/account">{{ $t("navbar.account") }}</router-link>
           <router-link to="/about">{{ $t("navbar.about") }}</router-link>
+          <router-link to="/todo">{{ $t("navbar.todo") }}</router-link>
         </div>
         <div>
-          <select class="selection" v-model="lang" @click="handleChage($event)">
+          <select class="selection" v-model="lang" @change="handleChage($event)">
             <option value="km">{{ $t("navbar.button.khmer") }}</option>
             <option value="en">{{ $t("navbar.button.english") }}</option>
           </select>
@@ -42,15 +43,15 @@ header {
 }
 
 nav {
-display: flex;
-width: 100%;
-height: 5vh;
-margin: 0;
-padding: 0;
-justify-content: space-between;
-align-items: center;
-background-color: #ffffff;
-border-bottom: 1px solid #0a0a0a;
+  display: flex;
+  width: 100%;
+  height: 5vh;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #0a0a0a;
 }
 
 nav a.router-link-exact-active {
@@ -91,6 +92,8 @@ nav a:first-of-type {
   border: 0px;
   margin-right: 12px;
   background-color: none;
+  color: #ffffff;
+  font-weight: bold;
   background: #ff9500 -webkit-linear-gradient(bottom, #ff9500 0%, #ff9500 100%);
 }
 </style>
