@@ -4,7 +4,6 @@
         <div>
             <label>New ToDo </label>
             <form @submit.prevent="addTodo()" class="input-todo">
-
                 <input v-model="newTodo" name="newTodo" placeholder="Add new todo..." autocomplete="off"
                     class="todo-input">
                 <button>{{ $t("button.add") }}</button>

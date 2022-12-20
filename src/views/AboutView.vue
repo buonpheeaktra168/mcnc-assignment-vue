@@ -1,24 +1,3 @@
-<script setup>
-import { ref, defineAsyncComponent } from "vue";
-const isModalActive = ref(false);
-
-const Modal = defineAsyncComponent({
-  loader: () => import('../components/Modal.vue'),
-})
-const LoadingSpinner = defineAsyncComponent({
-  loader: () => import('../components/LoadingSpinner.vue')
-})
-
-const openModal = () => {
-  isModalActive.value = true
-}
-const closeModal = () => {
-  isModalActive.value = false
-}
-
-
-</script>
-
 <template>
   <div class="about">
     <h1>This is an about page</h1>
@@ -33,6 +12,23 @@ const closeModal = () => {
     <button @click="openModal">Open Modal</button>
   </div>
 </template>
+
+<script setup>
+import { ref, defineAsyncComponent } from "vue";
+const isModalActive = ref(null);
+
+const Modal = defineAsyncComponent({
+  loader: () => import('../components/Modal.vue'),
+})
+const LoadingSpinner = defineAsyncComponent(() => import('../components/LoadingSpinner.vue'))
+
+const openModal = () => {
+  isModalActive.value = true
+}
+const closeModal = () => {
+  isModalActive.value = false
+}
+</script>
 
 <style>
 .about {
