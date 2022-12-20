@@ -8,7 +8,7 @@
           <router-link to="/about">{{ $t("navbar.about") }}</router-link>
         </div>
         <div>
-          <select class="selection" v-model="lang" @click="handleChage($event)">
+          <select class="selection" v-model="lang" @change="handleChage($event)">
             <option value="km">{{ $t("navbar.button.khmer") }}</option>
             <option value="en">{{ $t("navbar.button.english") }}</option>
           </select>
