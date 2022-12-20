@@ -5,7 +5,7 @@
             <h2 v-if="props.numList">{{ props.numList }}</h2>
             <h2>{{ props.title }}</h2>
         </div>
-        <button @click="removeTodoCard">{{ props.remove }}</button>
+        <button @click="removeTodoCard">{{ $t(props.remove) }}</button>
     </div>
 </template>
 
@@ -15,7 +15,6 @@ const props = defineProps({
     numList: Number,
     title: String,
     remove: String,
-    value: Boolean
 })
 
 const emits = defineEmits(["isRemoveTodo", "isCheck"])
@@ -23,9 +22,6 @@ function removeTodoCard() {
     emits("isRemoveTodo");
 }
 
-function onCheck() {
-    emits("isCheck")
-}
 </script>
 
 <style>

@@ -10,8 +10,8 @@
         </div>
         <div>
           <select class="selection" v-model="lang" @change="handleChage($event)">
-            <option value="km">{{ $t("navbar.button.khmer") }}</option>
-            <option value="en">{{ $t("navbar.button.english") }}</option>
+            <option value="km">{{ $t("button.khmer") }}</option>
+            <option value="en">{{ $t("button.english") }}</option>
           </select>
         </div>
       </nav>
@@ -94,6 +94,7 @@ nav a:first-of-type {
   background-color: none;
   color: #ffffff;
   font-weight: bold;
+  outline: none;
   background: #ff9500 -webkit-linear-gradient(bottom, #ff9500 0%, #ff9500 100%);
 }
 </style>
