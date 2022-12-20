@@ -6,6 +6,7 @@
           <router-link to="/">{{ $t("navbar.home") }}</router-link>
           <router-link to="/account">{{ $t("navbar.account") }}</router-link>
           <router-link to="/about">{{ $t("navbar.about") }}</router-link>
+          <router-link to="/todo">{{ $t("navbar.todo") }}</router-link>
         </div>
         <div>
           <select class="selection" v-model="lang" @change="handleChage($event)">
@@ -91,6 +92,8 @@ nav a:first-of-type {
   border: 0px;
   margin-right: 12px;
   background-color: none;
+  color: #ffffff;
+  font-weight: bold;
   background: #ff9500 -webkit-linear-gradient(bottom, #ff9500 0%, #ff9500 100%);
 }
 </style>
