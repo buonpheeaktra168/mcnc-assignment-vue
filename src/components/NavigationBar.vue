@@ -8,7 +8,7 @@
           <router-link to="/about">{{ $t("navbar.about") }}</router-link>
         </div>
         <div>
-          <select class="selection" v-model="lang" @click="handleChage($event)">
+          <select class="selection" v-model="lang" @change="handleChage($event)">
             <option value="km">{{ $t("navbar.button.khmer") }}</option>
             <option value="en">{{ $t("navbar.button.english") }}</option>
           </select>
@@ -44,39 +44,40 @@ header {
 nav {
 display: flex;
 width: 100%;
-margin: 0rem;
+height: 5vh;
+margin: 0;
+padding: 0;
 justify-content: space-between;
 align-items: center;
-background-color: #B0C4DE;
+background-color: #ffffff;
+border-bottom: 1px solid #0a0a0a;
 }
 
 nav a.router-link-exact-active {
   color: var(--color-text);
   color: rgb(0, 0, 0);
-  background-color: #77889950;
-  padding: 8px;
   font-size: 18px;
+  border-bottom: 2px solid;
+  border-bottom-color: blueviolet;
+  color: blueviolet;
 }
 
 nav a {
   display: inline-block;
   padding: 0 1rem;
   text-decoration: none;
-  color: aliceblue;
+  color: rgb(0, 0, 0);
   font-size: 18px;
-  padding: 8px;
   margin-right: 5px;
 }
 
 nav a:hover {
-  background-color: #77889950;
   display: inline-block;
   padding: 0 1rem;
   text-decoration: none;
-  color: aliceblue;
   font-size: 18px;
-  padding: 8px;
   margin-right: 5px;
+  color: blueviolet;
 }
 
 nav a:first-of-type {
@@ -89,5 +90,7 @@ nav a:first-of-type {
   border-radius: 8px;
   border: 0px;
   margin-right: 12px;
+  background-color: none;
+  background: #ff9500 -webkit-linear-gradient(bottom, #ff9500 0%, #ff9500 100%);
 }
 </style>
