@@ -43,15 +43,15 @@ header {
 }
 
 nav {
-display: flex;
-width: 100%;
-height: 5vh;
-margin: 0;
-padding: 0;
-justify-content: space-between;
-align-items: center;
-background-color: #ffffff;
-border-bottom: 1px solid #0a0a0a;
+  display: flex;
+  width: 100%;
+  height: 5vh;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #0a0a0a;
 }
 
 nav a.router-link-exact-active {
