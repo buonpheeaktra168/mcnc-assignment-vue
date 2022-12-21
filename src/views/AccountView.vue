@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     async getData() {
-      const res = await fetch("https://jsonplaceholder.typicode.com/users");
+      const res = await fetch("https://jsonplaceholder.typicode.com/users", { method: 'GET' });
       const data = await res.json();
       this.listUsers = data;
       console.log(this.listUsers)
@@ -71,7 +71,7 @@ export default {
   background-color: aliceblue;
   position: relative;
   max-width: 340px;
-  box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 6px 5px 2px rgba(0, 0, 0, 0.2);
   padding: 12px;
   margin-top: 12px;
   border-radius: 12px;

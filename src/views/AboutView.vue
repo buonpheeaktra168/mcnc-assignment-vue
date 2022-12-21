@@ -10,12 +10,33 @@
       </Suspense>
     </div>
     <button @click="openModal">Open Modal</button>
+    <h1>Pinia test</h1>
+    <div>
+      <p>{{ store.user.name }}</p>
+      <p>{{ store.user.email }}</p>
+      <p>{{ store.website }}</p>
+      <input type="text" v-model="nameInput" placeholder="New Name">
+      <button @click="handleSubmit">Change Name</button>
+      <p>Count is{{counterStore.count}}</p>
+      <button @click="counterStore.increment(1)">Increment</button>
+      <button @click="counterStore.waitAndAdd">wait count</button>
+    </div>
   </div>
+
 </template>
 
 <script setup>
 import { ref, defineAsyncComponent } from "vue";
+import { useUserStore } from "../store/user";
+import { useCounterStore } from "../store/counter"
+
 const isModalActive = ref(null);
+const store = useUserStore();
+const counterStore = useCounterStore()
+const nameInput = ref("");
+
+counterStore.count++;
+counterStore.increment(2);
 
 const Modal = defineAsyncComponent({
   loader: () => import('../components/Modal.vue'),
@@ -27,6 +48,11 @@ const openModal = () => {
 }
 const closeModal = () => {
   isModalActive.value = false
+}
+
+const handleSubmit = () => {
+  store.changeName(nameInput.value);
+  nameInput.value = "";
 }
 </script>
 
