@@ -3,10 +3,21 @@
         "home": "ទំព័រដើម",
         "about": "អំពី",
         "account": "គណនី",
-        "todo": "ធ្វើ",
-        "button": {
-            "khmer": "ភាសាខ្មែរ",
-            "english": "English"
-        }
+        "todo": "ធ្វើ"
+    },
+    "button": {
+        "khmer": "ភាសាខ្មែរ",
+        "english": "English",
+        "close": "បិទ",
+        "open": "បើក",
+        "delete": "លុប",
+        "remove": "ដកចេញ",
+        "add": "បន្ថែម"
+    },
+    "homePage": {},
+    "accountPage": {},
+    "aboutPage": {},
+    "todoPage": {
+        "addTodo": "បន្ថែមដើម្បីធ្វើ..."
     }
 }

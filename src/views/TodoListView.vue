@@ -1,21 +1,22 @@
 <template>
     <div class="todo-list-container">
         <h1>ToDo App</h1>
-        <label>New ToDo </label>
-        <form @submit.prevent="addTodo()" class="input-todo">
-
-            <input v-model="newTodo" name="newTodo" autocomplete="off" class="todo-input">
-            <button>Add ToDo</button>
-        </form>
+        <div>
+            <label>New ToDo </label>
+            <form @submit.prevent="addTodo()" class="input-todo">
+                <input v-model="newTodo" name="newTodo" placeholder="Add new todo..." autocomplete="off"
+                    class="todo-input">
+                <button>{{ $t("button.add") }}</button>
+            </form>
+        </div>
         <h2>ToDo List</h2>
         <div>
             <div v-for="(todo, index) in todos" :key="index">
-                <TodoCard :isCheck="isCheck" :title="todo.content" remove="Delete" @isRemoveTodo="removeTodo(index)" />
+                <TodoCard :title="todo.content" remove="button.remove" @isRemoveTodo="removeTodo(index)" />
             </div>
         </div>
-        <h4 v-if="todos.length < 0">Empty list.</h4>
+        <h4 v-if="todos.length === 0">Empty list.</h4>
     </div>
-
 
 </template>
 
@@ -31,7 +32,6 @@ const defaultData = [{
 }]
 const todosData = JSON.parse(localStorage.getItem('todos')) || defaultData;
 const todos = ref(todosData)
-console.log("Number", todos.content)
 const addTodo = () => {
     if (newTodo.value) {
         todos.value.push({
@@ -59,6 +59,7 @@ function saveData() {
 <style>
 .todo-list-container {
     display: flex;
+    max-height: 100vh;
     justify-content: center;
     flex-direction: column;
 }
@@ -89,6 +90,8 @@ function saveData() {
     border: 0;
     font-size: 30px;
     border-radius: 12px 0 0 12px;
+    padding-left: 20px;
+    outline: none;
 }
 
 label {
