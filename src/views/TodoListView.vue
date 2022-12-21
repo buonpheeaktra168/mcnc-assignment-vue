@@ -59,7 +59,7 @@ function saveData() {
 <style>
 .todo-list-container {
     display: flex;
-    max-height: 100vh;
+    max-width: 100vh;
     justify-content: center;
     flex-direction: column;
 }
