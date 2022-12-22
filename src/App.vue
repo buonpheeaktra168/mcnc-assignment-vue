@@ -13,7 +13,7 @@ const NavigationBar = defineAsyncComponent(
 
 <style>
 button {
-  padding: 20px;
+  padding: 12px;
   border: none;
   font-size: 16px;
   background-color: brown;
