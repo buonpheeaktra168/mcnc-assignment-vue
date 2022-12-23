@@ -28,7 +28,7 @@
 <script setup>
 import { ref, defineAsyncComponent } from "vue";
 import { useUserStore } from "../store/user";
-import { useCounterStore } from "../store/counter"
+import { useCounterStore } from "../store/counter";
 
 const isModalActive = ref(null);
 const store = useUserStore();

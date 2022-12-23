@@ -7,6 +7,7 @@
   <p>My name is {{ userOne.name }} and my age is {{ userOne.age }}</p>
   <input type="text" v-model="userOne.name">
   <button @click="updateUserOne">Update userOne</button>
+  <a href="/notification"><button>Notification</button></a>
 </template>
 
 <script>
@@ -15,7 +16,6 @@ import { ref, reactive } from 'vue'
 export default {
   data() {
     return {
-
     }
   },
   setup() {
