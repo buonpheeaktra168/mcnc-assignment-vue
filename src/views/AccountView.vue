@@ -20,8 +20,6 @@
 
 <script>
 import { ref, reactive, computed, watch, watchEffect } from 'vue';
-
-
 export default {
   data() {
     return {

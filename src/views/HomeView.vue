@@ -8,6 +8,7 @@
   <input type="text" v-model="userOne.name">
   <button @click="updateUserOne">Update userOne</button>
   <a href="/notification"><button>Notification</button></a>
+  <a href="/fetchUser"><button>Fetch User From store</button></a>
 </template>
 
 <script>

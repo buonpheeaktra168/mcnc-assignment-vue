@@ -12,19 +12,9 @@ export const useUserStore = defineStore("user", () => {
     const changeName = (newName) => {
         user.value.name = newName;
     };
-
-    const getData = async () => {
-        const res = await fetch("https://jsonplaceholder.typicode.com/users", { method: 'GET' });
-        const data  = res.json();
-        userAPI = data;
-        console.log(userAPI)
-    };
-
     return {
         user,
         website,
         changeName,
-        getData,
-        userAPI
     }
 })
