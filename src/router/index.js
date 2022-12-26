@@ -31,6 +31,11 @@ const router = createRouter({
       path: '/notification',
       name: 'notification',
       component: () => import('../views/notifications/view/NotificationView.vue')
+    },
+    {
+      path: '/fetchUser',
+      name: 'fetchUser',
+      component: () => import('../views/notifications/view/FetchUserFromStoreView.vue')
     }
   ]
 })
