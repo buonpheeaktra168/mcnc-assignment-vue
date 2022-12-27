@@ -1,16 +1,16 @@
 <template>
-  <a href="/notification"><button>Notification</button></a>
-  <a href="/fetchUser"><button>Fetch User From store</button></a>
-  <a href="/postRequest"><button>Post Request</button></a>
+  <div>
+    <Tabs />
+  </div>
 </template>
 
 <script>
-import { ref, reactive } from 'vue'
+import { defineComponent } from 'vue'
+import Tabs from '../components/Tabs.vue';
 
-export default {
-  
-
-}
+export default defineComponent({
+  components: { Tabs }
+})
 </script>
 <style>
 
