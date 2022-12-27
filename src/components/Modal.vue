@@ -30,8 +30,8 @@ const onClose = () => { emits("isClose") }
 </script>
 
 <style>
-.modal-animation-enter-active,
-.modal-animation-leave-active {
+.modal-animation-enter-active,  
+.modal-animation-leave-active {  
   transition: opacity 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02);
 }
 

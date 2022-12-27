@@ -36,6 +36,11 @@ const router = createRouter({
       path: '/fetchUser',
       name: 'fetchUser',
       component: () => import('../views/notifications/view/FetchUserFromStoreView.vue')
+    },
+    {
+      path: '/postRequest',
+      name: 'postRequest',
+      component: () => import('../views/notifications/view/PostRequestView.vue')
     }
   ]
 })
