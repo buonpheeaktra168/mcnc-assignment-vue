@@ -1,11 +1,11 @@
 <template>
     <div class="fetch-user-container">
         <div>Hello data</div>
-        <div v-if="store.isLoading">
+        <h1 v-if="store.isLoading">
             <LoadingSpinner title="Loading..." />
-        </div>
-        <div v-if="store.users" v-for="user in store.users" :key="user.id">
-            <UserCard :name="user.name" :email="user.email" />
+        </h1>
+        <div v-if="store.isItem" v-for="item in store.isItem" :key="item.id">
+            <UserCard :name="item.name" :email="item.email" />
         </div>
     </div>
 </template>
@@ -18,8 +18,7 @@ import LoadingSpinner from "../../../components/LoadingSpinner.vue";
 export default defineComponent({
     setup() {
         const store = useFetchUserStore();
-        store.fetchUser();
-        console.log(store.fetchUser);
+        store.fetchItem();
         return { store };
     },
     components: { UserCard, LoadingSpinner }

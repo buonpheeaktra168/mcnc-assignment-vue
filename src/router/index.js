@@ -22,7 +22,7 @@ const router = createRouter({
     {
       path: '/todo',
       name: 'todo',
-      component: () => import('../views/todos/views/TodoListview.vue')
+      component: () => import('../views/todos/views/TodoListView.vue')
     }, 
     {
       path: '/notification',
