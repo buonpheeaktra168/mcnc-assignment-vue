@@ -1,7 +1,9 @@
 <template>
     <div class="fetch-user-container">
         <div>Hello data</div>
-        <div v-if="store.isLoading">Loading...</div>
+        <div v-if="store.isLoading">
+            <LoadingSpinner title="Loading..." />
+        </div>
         <div v-if="store.users" v-for="user in store.users" :key="user.id">
             <UserCard :name="user.name" :email="user.email" />
         </div>
@@ -12,6 +14,7 @@
 import { defineComponent } from "vue";
 import { useFetchUserStore } from "../../../store/userData";
 import UserCard from "../components/UserCard.vue";
+import LoadingSpinner from "../../../components/LoadingSpinner.vue";
 export default defineComponent({
     setup() {
         const store = useFetchUserStore();
@@ -19,7 +22,7 @@ export default defineComponent({
         console.log(store.fetchUser);
         return { store };
     },
-    components: { UserCard }
+    components: { UserCard, LoadingSpinner }
 });
 </script>
 
