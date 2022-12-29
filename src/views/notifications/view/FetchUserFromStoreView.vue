@@ -12,7 +12,7 @@
 
 <script>
 import { defineComponent } from "vue";
-import { useFetchUserStore } from "../../../store/userData";
+import { useFetchUserStore } from "../store/userData";
 import UserCard from "../components/UserCard.vue";
 import LoadingSpinner from "../../../components/LoadingSpinner.vue";
 export default defineComponent({
