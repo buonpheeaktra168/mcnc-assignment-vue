@@ -3,7 +3,8 @@
         "home": "Home",
         "about": "About",
         "account": "Account",
-        "todo": "Todo List"
+        "todo": "Todo List",
+        "login": "Login"
     },
     "button": {
         "khmer": "ភាសាខ្មែរ",
@@ -12,7 +13,9 @@
         "open": "Open",
         "delete": "Delete",
         "remove": "Remove",
-        "add": "Add"
+        "add": "Add",
+        "signOut": "Sign Out",
+        "edit": "Edit"
     },
     "homePage": {},
     "accountPage": {},
