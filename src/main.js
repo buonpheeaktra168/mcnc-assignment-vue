@@ -9,13 +9,13 @@ const app = createApp(App)
 const pinia = createPinia()
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA0tYdknfMCHdEDpyzk1SDI7rG4j0fEYV4",
-    authDomain: "mcnc-assignment.firebaseapp.com",
-    projectId: "mcnc-assignment",
-    storageBucket: "mcnc-assignment.appspot.com",
-    messagingSenderId: "196184977364",
-    appId: "1:196184977364:web:40782cf674e26152feb041"
-  };
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+};
 
 app.use(router)
 app.use(pinia)
@@ -23,3 +23,5 @@ app.use(i18n)
 initializeApp(firebaseConfig);
 
 app.mount('#app')
+
+console.log(import.meta.env.VITE_API_KEY);
