@@ -1,21 +1,21 @@
 import { defineStore } from "pinia";
 
-export const useFetchUserStore = defineStore('user', {
+export const useFetchUserStore = defineStore('item', {
     state: () => ({
-        users: null,
+        items: null,
         loading: false,
     }),
     getters: {
-        getUser: (state) => state.users,
+        isItem: (state) => state.items,
         isLoading: (state) => state.loading,
     },
     actions: {
-        async fetchUser() {
+        async fetchItem() {
             try {
                 this.loading = true;
                 const res = await fetch("https://jsonplaceholder.typicode.com/users", { method: 'GET' })
                     .then(res => res.json())
-                    .then(data => this.users = data);
+                    .then(data => this.items = data);
                 this.loading = false
             } catch (error) {
                 console.log(error);

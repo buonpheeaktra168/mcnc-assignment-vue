@@ -2,7 +2,6 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 
 export const useUserStore = defineStore("user", () => {
-    const userAPI = ref([]);
     const user = ref({
         name: "Matt",
         email: "matt@gmail.com"

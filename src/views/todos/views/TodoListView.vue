@@ -1,18 +1,15 @@
 <template>
     <div class="todo-list-container">
-        <h1>ToDo App</h1>
         <div>
-            <label>New ToDo </label>
-            <form @submit.prevent="addTodo()" class="input-todo">
-                <input v-model="newTodo" name="newTodo" placeholder="Add new todo..." autocomplete="off"
-                    class="todo-input">
+            <form @submit.prevent="addTodo()">
+                <input v-model="newTodo" name="newTodo" placeholder="Add new todo..." autocomplete="off" class="input">
                 <button>{{ $t("button.add") }}</button>
             </form>
         </div>
         <h2>ToDo List</h2>
         <div>
             <div v-for="(todo, index) in todos" :key="index">
-                <TodoCard :title="todo.content" remove="button.remove" @isRemoveTodo="removeTodo(index)" />
+                <TodoCard :title="todo.content" remove="button.remove" @isRemoveTodo="removeTodo(index)" edit="button.edit"/>
             </div>
         </div>
         <h4 v-if="todos.length === 0">Empty list.</h4>
@@ -59,39 +56,27 @@ function saveData() {
 <style>
 .todo-list-container {
     display: flex;
-    max-width: 100vh;
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 
-.form-todo {
+form {
     display: flex;
     flex-direction: row;
+    outline: none;
+    height: 50px;
+    justify-content: center;
+    justify-content: center;
 }
 
-.input-todo {
-    display: flex;
-    max-width: 640px;
-    width: 80%;
-    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
-    background-color: #ffff;
-    border-radius: 12px;
+.input {
+    height: 40px;
+    outline: none;
     border: 0;
-    font-size: 30px;
-    justify-content: space-between;
-    margin-top: 8px;
 }
 
 .todo-input {
     display: flex;
-    max-width: 640px;
-    width: 80%;
-    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
-    border: 0;
-    font-size: 30px;
-    border-radius: 12px 0 0 12px;
-    padding-left: 20px;
-    outline: none;
 }
 
 label {

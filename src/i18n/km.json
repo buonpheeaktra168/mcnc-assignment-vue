@@ -3,7 +3,8 @@
         "home": "ទំព័រដើម",
         "about": "អំពី",
         "account": "គណនី",
-        "todo": "ធ្វើ"
+        "todo": "ធ្វើ",
+        "login": "ចូល"
     },
     "button": {
         "khmer": "ភាសាខ្មែរ",
@@ -12,7 +13,9 @@
         "open": "បើក",
         "delete": "លុប",
         "remove": "ដកចេញ",
-        "add": "បន្ថែម"
+        "add": "បន្ថែម",
+        "signOut": "ចាកចេញ",
+        "edit": "កែសម្រួល"
     },
     "homePage": {},
     "accountPage": {},

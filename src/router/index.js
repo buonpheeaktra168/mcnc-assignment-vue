@@ -10,34 +10,57 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/auth/view/LoginView.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('@/views/auth/view/RegisterView.vue')
+    },
+    {
       path: '/about',
       name: 'about',
-      component: () => import('../views/abouts/views/AboutView.vue')
+      component: () => import('@/views/abouts/views/AboutView.vue'),
+      meta: {
+        requiresAuth: true,
+      }
     },
     {
       path: '/account',
       name: 'acount',
-      component: () => import('../views/accounts/views/AccountView.vue')
+      component: () => import('@/views/accounts/views/AccountView.vue')
     },
     {
       path: '/todo',
       name: 'todo',
-      component: () => import('../views/todos/views/TodoListview.vue')
+      component: () => import('@/views/todos/views/TodoView.vue')
     }, 
+    {
+      path: '/todolist',
+      name: 'todoList',
+      component: () => import('@/views/todos/views/TodoListView.vue')
+    },
+    {
+      path: '/todofirebase',
+      name: 'todoFirebase',
+      component: () => import('@/views/todos/views/TodoFirebase.vue')
+    },
     {
       path: '/notification',
       name: 'notification',
-      component: () => import('../views/notifications/view/NotificationView.vue')
+      component: () => import('@/views/notifications/view/NotificationView.vue')
     },
     {
       path: '/fetchUser',
       name: 'fetchUser',
-      component: () => import('../views/notifications/view/FetchUserFromStoreView.vue')
+      component: () => import('@/views/notifications/view/FetchUserFromStoreView.vue')
     },
     {
       path: '/postRequest',
       name: 'postRequest',
-      component: () => import('../views/notifications/view/PostRequestView.vue')
+      component: () => import('@/views/notifications/view/PostRequestView.vue')
     }
   ]
 })
