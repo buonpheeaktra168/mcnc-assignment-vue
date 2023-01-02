@@ -3,9 +3,24 @@
         "home": "Home",
         "about": "About",
         "account": "Account",
-        "button": {
-            "khmer": "ភាសាខ្មែរ",
-            "english": "English"
-        }
+        "todo": "Todo List",
+        "login": "Login"
+    },
+    "button": {
+        "khmer": "ភាសាខ្មែរ",
+        "english": "English",
+        "close": "Close",
+        "open": "Open",
+        "delete": "Delete",
+        "remove": "Remove",
+        "add": "Add",
+        "signOut": "Sign Out",
+        "edit": "Edit"
+    },
+    "homePage": {},
+    "accountPage": {},
+    "aboutPage": {},
+    "todoPage": {
+        "addTodo": "Add new todo..."
     }
 }

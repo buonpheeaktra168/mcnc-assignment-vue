@@ -1,32 +1,37 @@
 <template>
   <transition name="modal-animation">
-    <div v-show="modalActive" class="modal">
+    <div class="modal">
       <transition name="modal-animation-inner">
-        <div v-show="modalActive" class="modal-inner">
-          <i @click="close" class="fa fa-times-circle"></i>
+        <div class="modal-inner">
+          <h1 v-if="props.title">{{ title }}</h1>
+          <p v-if="props.message">{{ props.message }}</p>
+          <i class="fa fa-times-circle"></i>
           <slot />
-          <button @click="close" type="button">close</button>
+          <button @click="onClose" v-if="props.close">{{ props.close }}</button>
         </div>
       </transition>
     </div>
   </transition>
 </template>
 
-<script>
-export default {
-  props: ["modalActive", "close"],
-  setup(props, { emit }) {
-    const close = () => {
-      emit("close");
-    };
-    return { close };
-  },
-};
+<script setup>
+
+import { defineProps, defineEmits } from 'vue';
+await new Promise((res) => setTimeout(res, 200));
+const props = defineProps({
+  title: String,
+  message: String,
+  close: String
+})
+
+const emits = defineEmits(["isClose"])
+const onClose = () => { emits("isClose") }
+
 </script>
 
 <style>
-.modal-animation-enter-active,
-.modal-animation-leave-active {
+.modal-animation-enter-active,  
+.modal-animation-leave-active {  
   transition: opacity 0.3s cubic-bezier(0.52, 0.02, 0.19, 1.02);
 }
 

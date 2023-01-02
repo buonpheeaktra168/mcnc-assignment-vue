@@ -1,6 +1,9 @@
 <script setup>
-import {  RouterView } from 'vue-router'
-import NavigationBar from './components/NavigationBar.vue';
+import { defineAsyncComponent } from 'vue';
+import { RouterView } from 'vue-router'
+const NavigationBar = defineAsyncComponent(
+  () => import('./components/NavigationBar.vue')
+)
 </script>
 
 <template>
@@ -9,13 +12,13 @@ import NavigationBar from './components/NavigationBar.vue';
 </template>
 
 <style>
-  button {
-    padding: 20px 40px;
-    border: none;
-    font-size: 16px;
-    background-color: brown;
-    color: aliceblue;
-    cursor: pointer;
-    border-radius: 5px;
-  }
+button {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 </style>
