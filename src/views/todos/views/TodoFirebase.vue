@@ -22,7 +22,7 @@
 import { db } from '../../../../utils/firebase'
 import { collection, addDoc, getDocs, deleteDoc, doc, onSnapshot, } from "firebase/firestore";
 import { ref, onMounted } from 'vue';
-
+const dbConllectionRef = (collection(db, 'todo2'))
 const todos = ref([
     // {
     //     id: 001,
@@ -52,7 +52,7 @@ onMounted(async () => {
     // todos.value = listTodos
 
 
-    onSnapshot(collection(db, 'todos'), (querySnapshot) => {
+    onSnapshot(dbConllectionRef, (querySnapshot) => {
         const listTodos = []
         querySnapshot.forEach((doc) => {
             const todo = {
@@ -71,7 +71,7 @@ onMounted(async () => {
 // addd todo
 const newTodoTitle = ref('')
 const addTodo = async () => {
-    const todoRef = await addDoc(collection(db, "todos"), {
+    const todoRef = await addDoc(dbConllectionRef, {
         title: newTodoTitle.value,
     });
     newTodoTitle.value = '',
@@ -81,7 +81,7 @@ const addTodo = async () => {
 // delete todos
 
 const deleteTodo = id => {
-    deleteDoc(doc(db, "todos", id));
+    deleteDoc(doc(db, "todo2", id));
 }
 
 </script>

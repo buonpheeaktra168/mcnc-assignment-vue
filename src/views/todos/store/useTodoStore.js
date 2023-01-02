@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
 import { db } from "../../../../utils/firebase";
-import { collection, doc, setDoc, getDocs, query } from "firebase/firestore";
+import { collection, doc, addDoc, getDocs, query, deleteDoc } from "firebase/firestore";
 
 export const useTodoStore = defineStore('todo', {
     state: () => ({
         todos: null,
-        loading: false
+        loading: false,
     }),
 
     getters: {
@@ -14,21 +14,53 @@ export const useTodoStore = defineStore('todo', {
     },
 
     actions: {
-        async fetchTodos() {
-            this.loading = true
-            this.todos = []
-            const q = getDocs(
-                collection(db, 'todos'),
+        async getTodos() {
+            this.loading = true;
+            this.todos = [];
+            const q = query(
+                collection(db, "todos"),
             );
-            const querySnapshot = await getDocs(q);
-            querySnapshot.forEach((doc) => {
-                console.log('ID', doc.id, "=>", 'Data', doc.data())
-                this.todos.push({
-                    id: doc.id,
-                    ...doc.data(),
+            try {
+                const querySnapshot = await getDocs(q);
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.data().title)
+                    this.todos.push({
+                        id: doc.id,
+                        ...doc.data(),
+                    });
                 });
-            });
-            this.loading = false
+            } catch (error) {
+                console.log(error);
+            } finally {
+                this.loading = false;
+            }
+        },
+        async addTodos(title) {
+            this.loading = true;
+            try {
+                const docObj = {
+                    title: title,
+                }
+                const q = query(collection(db, 'todos'))
+                const docRef = await addDoc(q, docObj);
+                this.todos.push({ id: docRef.id, ...docObj });
+            } catch (error) {
+                console.log(error);
+            } finally {
+                this.loading = false;
+            }
+        },
+        async deleteTodo(id) {
+            this.loading = true
+            try {
+                await deleteDoc(doc(db, 'todos', id))
+                location.reload()
+            } catch (error) {
+                this.loading = false
+                console.log(error)
+            } finally {
+                this.loading = false
+            }
 
         }
     }
