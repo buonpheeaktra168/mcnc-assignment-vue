@@ -48,6 +48,11 @@ const router = createRouter({
       component: () => import('@/views/todos/views/TodoFirebase.vue')
     },
     {
+      path: '/todofirebasePinia',
+      name: 'todoFirebasePinia',
+      component: () => import('@/views/todos/views/TodoFirebasePinia.vue')
+    },
+    {
       path: '/notification',
       name: 'notification',
       component: () => import('@/views/notifications/view/NotificationView.vue')

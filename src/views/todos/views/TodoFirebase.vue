@@ -1,44 +1,27 @@
 <template>
     <div class="todo-container">
         <div>
-            <form>
-                <input type="text" placeholder="New todo" />
-                <button @click="addNewTodo">Add</button>
+            <form @submit.prevent="addTodo()">
+                <input v-model="newTodoTitle" type="text" placeholder="New todo" name="newTodo" />
+                <button @click="addTodo">Add</button>
             </form>
         </div>
         <div v-for="todo in todos" :key="todo.id" class="todo-card">
             <p>{{ todo.title }}</p>
-            
+
             <div>
-                <button>Edit</button>
-                <button>Delete</button>
+                <!-- <button>Edit</button> -->
+                <button @click="deleteTodo(todo.id)">Delete</button>
             </div>
         </div>
-
-        <div v-for="todo in store.todos" :key="todo.id" class="todo-card">
-            <p>{{ todo.title }}</p>
-            <div>
-                <button>Edit</button>
-                <button>Delete</button>
-            </div>
-        </div>
-
     </div>
 
 </template>
 
 <script setup>
-import { useTodoStore } from '../store/useTodoStore'
 import { db } from '../../../../utils/firebase'
-import { collection, doc, setDoc, getDocs } from "firebase/firestore";
-
-// import { v4 as uuidv4 } from 'uuid'
+import { collection, addDoc, getDocs, deleteDoc, doc, onSnapshot, } from "firebase/firestore";
 import { ref, onMounted } from 'vue';
-
-const store = useTodoStore()
-store.fetchTodos();
-console.log(store.todos)
-
 
 const todos = ref([
     // {
@@ -51,24 +34,55 @@ const todos = ref([
     // }
 ])
 
-const addNewTodo = () => {
-    
+
+
+// get todo
+onMounted(async () => {
+    // const queryTodo = await getDocs(collection(db, 'todos'))
+    // let listTodos = []
+    // queryTodo.forEach((doc) => {
+    //     // console.log(doc.id, "=>", doc.data())
+    //     const todo = {
+    //         id: doc.id,
+    //         title: doc.data().title,
+    //     }
+    //     console.log(todo)
+    //     listTodos.push(todo)
+    // })
+    // todos.value = listTodos
+
+
+    onSnapshot(collection(db, 'todos'), (querySnapshot) => {
+        const listTodos = []
+        querySnapshot.forEach((doc) => {
+            const todo = {
+                id: doc.id,
+                title: doc.data().title,
+                done: doc.data().done,
+            }
+            console.log(todo)
+            listTodos.push(todo)
+        })
+        todos.value = listTodos
+    })
+})
+
+
+// addd todo
+const newTodoTitle = ref('')
+const addTodo = async () => {
+    const todoRef = await addDoc(collection(db, "todos"), {
+        title: newTodoTitle.value,
+    });
+    newTodoTitle.value = '',
+        console.log("New Titile ID: ", todoRef.id);
 }
 
-onMounted(async () => {
-    const queryTodo = await getDocs(collection(db, 'todos'))
-    let listTodos = []
-    queryTodo.forEach((doc) => {
-        // console.log(doc.id, "=>", doc.data())
-        const todo = {
-            id: doc.id,
-            title: doc.data().title,
-        }
-        console.log(todo)
-        listTodos.push(todo)
-    })
-    todos.value = listTodos
-})
+// delete todos
+
+const deleteTodo = id => {
+    deleteDoc(doc(db, "todos", id));
+}
 
 </script>
 
