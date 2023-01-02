@@ -3,6 +3,7 @@
         <div>
             <form @submit.prevent="handleSubmit" id="form">
                 <input v-model.trimp="title" type="text" placeholder="New todo" />
+                <input v-model.trimp="description" type="text" placeholder="Description" />
                 <button>Add</button>
             </form>
         </div>
@@ -13,7 +14,10 @@
             <h1>Empty Todo</h1>
         </div>
         <div v-for="todo in store.isTodos" :key="todo.id" class="todo-card">
-            <p>{{ todo.title }}</p>
+            <div>
+                <h4>{{ todo.title }}</h4>
+                <p>{{ todo.description }}</p>
+            </div>
             <div>
                 <button>Edit</button>
                 <button @click="store.deleteTodo(todo.id)" class="button-delete">Delete</button>
@@ -31,13 +35,15 @@ import { ref } from 'vue';
 
 
 const title = ref('')
+const description = ref('')
 
 const store = useTodoStore()
 store.getTodos();
 
 const handleSubmit = async () => {
-    await store.addTodos(title.value)
+    await store.addTodos(title.value, description.value)
     title.value = ''
+    description.value = ''
 }
 
 </script>

@@ -16,10 +16,10 @@ import TodoListView from '../views/TodoListView.vue';
 import TodoFirebasePinia from '../views/TodoFirebasePinia.vue';
 
 export default defineComponent({
-    components: { TodoFirebasePinia, TodoListView, TodoFirebase },
+    components: { TodoFirebasePinia, TodoFirebase, TodoListView },
     data() {
         return {
-            tabs: [ "TodoFirebasePinia", "TodoFirebase", "TodoListView"],
+            tabs: ["TodoFirebasePinia", "TodoFirebase", "TodoListView"],
             component: "TodoFirebasePinia"
         }
     }

@@ -1,5 +1,5 @@
 <template>
-    <div class="todo-container">
+    <div class="todo-container" id="form">
         <div>
             <form @submit.prevent="addTodo()">
                 <input v-model="newTodoTitle" type="text" placeholder="New todo" name="newTodo" />

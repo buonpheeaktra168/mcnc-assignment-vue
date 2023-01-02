@@ -35,11 +35,12 @@ export const useTodoStore = defineStore('todo', {
                 this.loading = false;
             }
         },
-        async addTodos(title) {
+        async addTodos(title, description) {
             this.loading = true;
             try {
                 const docObj = {
                     title: title,
+                    description: description,
                 }
                 const q = query(collection(db, 'todos'))
                 const docRef = await addDoc(q, docObj);
@@ -51,17 +52,13 @@ export const useTodoStore = defineStore('todo', {
             }
         },
         async deleteTodo(id) {
-            this.loading = true
             try {
                 await deleteDoc(doc(db, 'todos', id))
                 location.reload()
             } catch (error) {
                 this.loading = false
                 console.log(error)
-            } finally {
-                this.loading = false
             }
-
         }
     }
 })
