@@ -1,7 +1,14 @@
 <template>
     <div class="todo-container">
+        <div>
+            <form>
+                <input type="text" placeholder="New todo" />
+                <button @click="addNewTodo">Add</button>
+            </form>
+        </div>
         <div v-for="todo in todos" :key="todo.id" class="todo-card">
             <p>{{ todo.title }}</p>
+            
             <div>
                 <button>Edit</button>
                 <button>Delete</button>
@@ -30,7 +37,7 @@ import { ref, onMounted } from 'vue';
 
 const store = useTodoStore()
 store.fetchTodos();
-console.log(store.todos.title)
+console.log(store.todos)
 
 
 const todos = ref([
@@ -43,6 +50,10 @@ const todos = ref([
     //     title: 'Hi todo'
     // }
 ])
+
+const addNewTodo = () => {
+    
+}
 
 onMounted(async () => {
     const queryTodo = await getDocs(collection(db, 'todos'))
