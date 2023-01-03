@@ -36,7 +36,7 @@ const router = createRouter({
       path: '/todo',
       name: 'todo',
       component: () => import('@/views/todos/views/TodoView.vue')
-    }, 
+    },
     {
       path: '/todolist',
       name: 'todoList',
@@ -51,6 +51,16 @@ const router = createRouter({
       path: '/todofirebasePinia',
       name: 'todoFirebasePinia',
       component: () => import('@/views/todos/views/TodoFirebasePinia.vue')
+    },
+    {
+      path: '/todoFirebasePiniaUpdate/:id',
+      name: 'todoFirebasePiniaUpdate',
+      component: () => import('@/views/todos/views/TodoFirebasePiniaUpdate.vue')
+    },
+    {
+      path: '/todoDetail/:id',
+      name: 'todoDetail',
+      component: () => import('@/views/todos/views/TodoDetailView.vue')
     },
     {
       path: '/notification',
