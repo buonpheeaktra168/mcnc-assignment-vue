@@ -7,7 +7,7 @@
             <form @submit.prevent="handleUpdate" id="form">
                 <input type="text" v-model.trimp="todoRef.title" />
                 <input type="text" v-model.trimp="todoRef.description" />
-                <button type="submit" :disabled="store.isLoading">Update</button>
+                <button type="submit" :disabled="store.isLoading">{{ $t('button.update') }}</button>
             </form>
         </div>
     </div>
@@ -31,6 +31,7 @@ onMounted(async () => {
 
 const handleUpdate = async () => {
     await store.updateTodo(todoRef.value)
+    router.push('/todoFirebasePinia')
 }
 </script>
 
