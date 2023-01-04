@@ -15,7 +15,8 @@
         "remove": "Remove",
         "add": "Add",
         "signOut": "Sign Out",
-        "edit": "Edit"
+        "edit": "Edit",
+        "details": "Detaials"
     },
     "homePage": {},
     "accountPage": {},

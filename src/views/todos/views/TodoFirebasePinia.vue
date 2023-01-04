@@ -2,9 +2,11 @@
     <div class="todo-container">
         <div>
             <form @submit.prevent="handleSubmit" id="form">
-                <input v-model.trimp="title" type="text" placeholder="Add todo..." />
-                <input v-model.trimp="description" type="text" placeholder="Description..." />
-                <button>Add</button>
+                <div>
+                    <input v-model.trimp="title" type="text" placeholder="Add todo..." />
+                    <input v-model.trimp="description" type="text" placeholder="Description..." />
+                </div>
+                <button>{{ $t('button.add') }}</button>
             </form>
         </div>
         <div v-if="store.isLoading">
@@ -19,9 +21,9 @@
                     <h2>{{ todo.title }}</h2>
                 </div>
                 <div class="button-card">
-                    <button @click="todoDetail(todo.id)">Details</button>
-                    <button @click="todoUpdate(todo.id)" class="edit-button">Edit</button>
-                    <button @click="store.deleteTodo(todo.id)" class="button-delete">Delete</button>
+                    <button @click="todoDetail(todo.id)">{{ $t('button.details') }}</button>
+                    <button @click="todoUpdate(todo.id)" class="edit-button">{{ $t('button.edit') }}</button>
+                    <button @click="store.deleteTodo(todo.id)" class="button-delete">{{ $t('button.delete') }}</button>
                 </div>
             </div>
         </div>
@@ -64,6 +66,7 @@ const todoUpdate = (id) => {
     display: flex;
     flex-direction: column;
     margin-top: 80px;
+    padding-right: 30px;
 }
 
 #form {
@@ -83,9 +86,13 @@ const todoUpdate = (id) => {
     outline-color: blue;
 }
 
+#form button {
+    width: 120px;
+}
+
 
 .todo-card-box {
-    display: flex;
+    display: grid;
     width: 310px;
     height: 200px;
     box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
@@ -95,6 +102,7 @@ const todoUpdate = (id) => {
     padding: 2px 12px 2px 12px;
     margin: 0 12px 0 12px;
     align-items: center;
+    justify-content: space-between;
     margin-top: 12px;
 }
 
@@ -127,5 +135,110 @@ const todoUpdate = (id) => {
 .button-card {
     justify-content: flex-end;
     align-items: flex-end;
+}
+
+@media (min-width: 1200px) {
+    .todo-card-box {
+        width: 320px;
+        height: 250px;
+        box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+        background-color: #ffff;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .wrapper {
+        display: grid;
+        margin-top: 80px;
+        grid-template-columns: 350px 350px 320px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    .todo-card-box {
+        width: 320px;
+        height: 250px;
+        box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+        background-color: #ffff;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .wrapper {
+        display: grid;
+        margin-top: 80px;
+        grid-template-columns: 350px 350px 320px;
+    }
+
+}
+
+@media (max-width: 912px) {
+    .todo-card-box {
+        width: 320px;
+        height: 250px;
+        box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+        background-color: #ffff;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wrapper {
+        display: grid;
+        margin-top: 80px;
+        grid-template-columns: 350px 320px;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .wrapper {
+        display: grid;
+        margin-top: 80px;
+        grid-template-columns: 350px 350px;
+    }
+
+}
+
+
+
+
+@media (max-width: 540px) {
+    .todo-card-box {
+        width: 320px;
+        height: 250px;
+        box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+        background-color: #ffff;
+
+    }
+
+    .wrapper {
+        display: grid;
+        margin-top: 80px;
+        grid-template-columns: 300px 300px;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .todo-card-box {
+        display: flex;
+        width: 420px;
+        height: 250px;
+        box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+        background-color: #ffff;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .wrapper {
+        display: grid;
+        margin-top: 80px;
+        grid-template-columns: 350px;
+    }
+
 }
 </style>
