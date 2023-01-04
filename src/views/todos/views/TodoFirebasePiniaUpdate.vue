@@ -22,16 +22,15 @@ import LoadingSpinner from '../../../components/LoadingSpinner.vue';
 const route = useRoute()
 const router = useRouter()
 const store = useTodoStore()
-const todoRef = ref({ title: '', description: '' })
+const todoRef = ref({ id: '', title: '', description: '' })
 
 onMounted(async () => {
     todoRef.value = await store.getTodoById(route.params.id)
-    todoRef.value;
+    todoRef.value.id = route.params.id
 });
 
 const handleUpdate = async () => {
-    await store.updateTodo(route.params.id, todoRef.value)
-    router.replace({ name: 'todoFirebasePinia' })
+    await store.updateTodo(todoRef.value)
 }
 </script>
 
