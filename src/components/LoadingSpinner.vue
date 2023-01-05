@@ -49,7 +49,7 @@ const props = defineProps({
     align-items: center;
     width: 100vw;
     height: 100vh;
-    position: fixed;
+    position:absolute;
     top: 0;
     background-color: rgb(255, 255, 255, 0.7);
     left: 0;

@@ -1,43 +1,29 @@
 <template>
     <div>
-        <h1>{{ msg.title1 }}</h1>
-        <form @submit.prevent="postRequest">
-            <div class="form-input">
-                <label for="userId">UserId</label>
-                <input type="text" id="userId" v-model="formData.userId">
-            </div>
-            <div class="form-input">
-                <label for="title">title</label>
-                <input type="text" id="title" v-model="formData.title">
-            </div>
-            <div class="form-input">
-                <label for="body">body</label>
-                <input type="text" id="body" v-model="formData.body">
-            </div>
-            <button>Post Data</button>
-        </form>
+        <input v-model="store.query" placeholder="search" />
         <h1>{{ msg.title2 }}</h1>
-        <h1 v-if="store.isLoading">
+        <div v-if="store.isLoading">
             <LoadingSpinner title="Loading..." />
-        </h1>
-        <div v-for="data in store.isPost" :key="data.id">
-            <UserCard :id="data.id" :title="data.title" :body="data.body" />
+        </div>
+        <div v-else class="wrapper">
+            <div v-for="data in store.isPost" :key="data.id">
+                <UserCard :id="data.id" :title="data.title" :body="data.body" />
+            </div>
         </div>
 
     </div>
 </template>
 
 <script>
-import axios from 'axios';
-import { defineComponent } from 'vue';
+import { defineComponent, watchEffect } from 'vue';
 import LoadingSpinner from '../../../components/LoadingSpinner.vue';
 import { usePostStore } from '../../../store/posts';
 import UserCard from '../components/UserCard.vue';
 export default defineComponent({
     components: {
-    UserCard,
-    LoadingSpinner
-},
+        UserCard,
+        LoadingSpinner
+    },
     data() {
         return {
             msg: {
@@ -52,20 +38,19 @@ export default defineComponent({
             listData: []
         };
     },
-    methods: {
-        postRequest() {
-            axios
-                .post("https://jsonplaceholder.typicode.com/posts", this.formData)
-                .then((respone) => console.log(respone))
-                .catch((error) => console.log(error));
-        },
-    },
     setup() {
         const store = usePostStore();
         store.fetchPosts();
         console.log(store.fetchPosts);
+        watchEffect(() => {
+            store.fetchPosts(store.query)
+
+        })
+
         return { store };
     },
+
+
 
 })
 
@@ -89,5 +74,11 @@ label {
 .form-input {
     display: flex;
     flex-direction: column;
+}
+
+.wrapper {
+    display: grid;
+    margin-top: 80px;
+    grid-template-columns: 350px 350px 300px;
 }
 </style>

@@ -4,17 +4,19 @@ export const usePostStore = defineStore('post', {
     state: () => ({
         posts: null,
         loading: false,
+        query: ''
     }),
     getters: {
         isPost: (state) => state.posts,
         isLoading: (state) => state.loading,
+        isQuery: (state) => state.query
     },
 
     actions: {
         async fetchPosts() {
             try {
                 this.loading = true
-                const respone = await fetch("https://jsonplaceholder.typicode.com/posts", {method: 'GET'})
+                await fetch("https://jsonplaceholder.typicode.com/posts?q=" + this.query)
                     .then(respone => respone.json())
                     .then(data => this.posts = data);
                 this.loading = false
