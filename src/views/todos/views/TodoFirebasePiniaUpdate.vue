@@ -30,8 +30,12 @@ onMounted(async () => {
 });
 
 const handleUpdate = async () => {
-    await store.updateTodo(todoRef.value)
-    router.push('/todoFirebasePinia')
+    if (todoRef.value.title !== '') {
+        await store.updateTodo(todoRef.value)
+        router.push('/todoFirebasePinia')
+    } else {
+        return alert('Empty titlle')
+    }
 }
 </script>
 

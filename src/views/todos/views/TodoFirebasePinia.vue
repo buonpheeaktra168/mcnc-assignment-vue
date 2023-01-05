@@ -51,6 +51,7 @@ const handleSubmit = async () => {
     description.value = ''
 }
 
+
 const todoDetail = (id) => {
     router.push({ name: 'todoDetail', params: { id: id } })
 }
@@ -61,183 +62,753 @@ const todoUpdate = (id) => {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .todo-container {
     display: flex;
+    flex: 1;
     flex-direction: column;
-    margin-top: 80px;
-    padding-right: 30px;
-}
+    margin-top: 120px;
+    justify-content: center;
 
-#form {
-    display: flex;
-    width: 80%;
-    padding: 5px 5px;
-    margin: 0 auto;
-    flex-direction: column;
-}
-
-#form input {
-    width: 100%;
-    height: 30px;
-    padding: 10px 0 10px 20px;
-    margin: 8px 0;
-    border: 0px;
-    outline-color: blue;
-}
-
-#form button {
-    width: 120px;
-}
-
-
-.todo-card-box {
-    display: grid;
-    width: 310px;
-    height: 200px;
-    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
-    background-color: #ffff;
-    border-radius: 12px;
-    flex-direction: column;
-    padding: 2px 12px 2px 12px;
-    margin: 0 12px 0 12px;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 12px;
-}
-
-.todo-text {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.radio-button {
-    width: 25px;
-    height: 25px;
-    margin-right: 12px;
-}
-
-.wrapper {
-    display: grid;
-    margin-top: 80px;
-    grid-template-columns: 350px 350px 300px;
-}
-
-.button-delete {
-    background-color: crimson;
-}
-
-.edit-button {
-    background-color: blue;
-}
-
-.button-card {
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-
-@media (min-width: 1200px) {
-    .todo-card-box {
-        width: 320px;
-        height: 250px;
-        box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
-        background-color: #ffff;
-        align-items: center;
-        justify-content: center;
-
-    }
-
-    .wrapper {
-        display: grid;
-        margin-top: 80px;
-        grid-template-columns: 350px 350px 320px;
-    }
-
-}
-
-@media (max-width: 1200px) {
-    .todo-card-box {
-        width: 320px;
-        height: 250px;
-        box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
-        background-color: #ffff;
-        align-items: center;
-        justify-content: center;
-
-    }
-
-    .wrapper {
-        display: grid;
-        margin-top: 80px;
-        grid-template-columns: 350px 350px 320px;
-    }
-
-}
-
-@media (max-width: 912px) {
-    .todo-card-box {
-        width: 320px;
-        height: 250px;
-        box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
-        background-color: #ffff;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .wrapper {
-        display: grid;
-        margin-top: 80px;
-        grid-template-columns: 350px 320px;
-    }
-
-}
-
-@media (max-width: 600px) {
-    .wrapper {
-        display: grid;
-        margin-top: 80px;
-        grid-template-columns: 350px 350px;
-    }
-
-}
-
-
-
-
-@media (max-width: 540px) {
-    .todo-card-box {
-        width: 320px;
-        height: 250px;
-        box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
-        background-color: #ffff;
-
-    }
-
-    .wrapper {
-        display: grid;
-        margin-top: 80px;
-        grid-template-columns: 300px 300px;
-    }
-
-}
-
-@media (max-width: 500px) {
-    .todo-card-box {
+    #form {
         display: flex;
-        width: 420px;
-        height: 250px;
-        box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
-        background-color: #ffff;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: center;
+        padding: 5px 5px;
+        margin: 0 auto;
+        flex-direction: column;
 
+        input {
+            width: 100%;
+            height: 30px;
+            padding: 10px 0 10px 20px;
+            margin: 8px 0;
+            border: 0px;
+            outline-color: blue;
+        }
+
+        button {
+            width: 120px;
+        }
     }
 
     .wrapper {
         display: grid;
         margin-top: 80px;
-        grid-template-columns: 350px;
+        grid-template-columns: 400px 400px 300px;
+        justify-content: center;
+
+        .todo-card-box {
+            display: grid;
+            width: 340px;
+            height: 200px;
+            box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+            background-color: #ffff;
+            border-radius: 12px;
+            flex-direction: column;
+            padding: 2px 12px 2px 12px;
+            margin: 0 12px 0 12px;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+
+            .button-card {
+                justify-content: flex-end;
+                align-items: flex-end;
+
+                .button-delete {
+                    background-color: crimson;
+                }
+
+                .edit-button {
+                    background-color: blue;
+                }
+
+            }
+        }
+    }
+}
+
+@media (max-width: 1080px) {
+    .todo-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-top: 120px;
+        justify-content: center;
+
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5px 5px;
+            margin: 0 auto;
+            flex-direction: column;
+
+            input {
+                width: 100%;
+                height: 30px;
+                padding: 10px 0 10px 20px;
+                margin: 8px 0;
+                border: 0px;
+                outline-color: blue;
+            }
+
+            button {
+                width: 120px;
+            }
+        }
+
+        .wrapper {
+            display: grid;
+            margin-top: 80px;
+            grid-template-columns: 370px 370px;
+            justify-content: center;
+
+            .todo-card-box {
+                display: grid;
+                width: 320px;
+                height: 200px;
+                box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+                background-color: #ffff;
+                border-radius: 12px;
+                flex-direction: column;
+                padding: 2px 12px 2px 12px;
+                align-items: center;
+                justify-content: space-between, center;
+                margin-top: 12px;
+
+                .button-card {
+                    justify-content: flex-end;
+                    align-items: flex-end;
+
+                    .button-delete {
+                        background-color: crimson;
+                    }
+
+                    .edit-button {
+                        background-color: blue;
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 913px) {
+    .todo-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-top: 120px;
+        justify-content: center;
+
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5px 5px;
+            margin: 0 auto;
+            flex-direction: column;
+
+            input {
+                width: 90%;
+                height: 30px;
+                padding: 10px 0 10px 20px;
+                margin: 8px 0;
+                border: 0px;
+                outline-color: blue;
+            }
+
+            button {
+                width: 120px;
+            }
+        }
+
+        .wrapper {
+            display: grid;
+            margin-top: 80px;
+            grid-template-columns: 400px 390px;
+            justify-content: center;
+
+            .todo-card-box {
+                display: grid;
+                width: 360px;
+                height: 300px;
+                box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+                background-color: #ffff;
+                border-radius: 12px;
+                flex-direction: column;
+                padding: 2px 12px 2px 12px;
+                align-items: center;
+                justify-content: center;
+                margin-top: 12px;
+
+                .button-card {
+                    justify-content: flex-end;
+                    align-items: flex-end;
+
+                    .button-delete {
+                        background-color: crimson;
+                    }
+
+                    .edit-button {
+                        background-color: blue;
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 821px) {
+    .todo-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-top: 120px;
+        justify-content: center;
+
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5px 5px;
+            margin: 0 auto;
+            flex-direction: column;
+
+            input {
+                width: 90%;
+                height: 30px;
+                padding: 10px 0 10px 20px;
+                margin: 8px 0;
+                border: 0px;
+                outline-color: blue;
+            }
+
+            button {
+                width: 120px;
+            }
+        }
+
+        .wrapper {
+            display: grid;
+            margin-top: 80px;
+            grid-template-columns: 370px 370px;
+            justify-content: center;
+
+            .todo-card-box {
+                display: grid;
+                width: 320px;
+                height: 200px;
+                box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+                background-color: #ffff;
+                border-radius: 12px;
+                flex-direction: column;
+                padding: 2px 12px 2px 12px;
+                align-items: center;
+                justify-content: space-between, center;
+                margin-top: 12px;
+
+                .button-card {
+                    justify-content: flex-end;
+                    align-items: flex-end;
+
+                    .button-delete {
+                        background-color: crimson;
+                    }
+
+                    .edit-button {
+                        background-color: blue;
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 720px) {
+    .todo-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-top: 120px;
+        justify-content: center;
+
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5px 5px;
+            margin: 0 auto;
+            flex-direction: column;
+
+            input {
+                width: 100%;
+                height: 30px;
+                padding: 10px 0 10px 20px;
+                margin: 8px 0;
+                border: 0px;
+                outline-color: blue;
+            }
+
+            button {
+                width: 120px;
+            }
+        }
+
+        .wrapper {
+            display: grid;
+            margin-top: 80px;
+            grid-template-columns: 370px;
+            justify-content: center;
+
+            .todo-card-box {
+                display: grid;
+                width: 400px;
+                height: 200px;
+                box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+                background-color: #ffff;
+                border-radius: 12px;
+                flex-direction: column;
+                padding: 2px 12px 2px 12px;
+                align-items: center;
+                justify-content: center;
+
+                margin-top: 12px;
+
+                .button-card {
+                    justify-content: flex-end;
+                    align-items: flex-end;
+
+                    .button-delete {
+                        background-color: crimson;
+                    }
+
+                    .edit-button {
+                        background-color: blue;
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 376px) {
+    .todo-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-top: 120px;
+        justify-content: center;
+
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5px 5px;
+            margin: 0 auto;
+            flex-direction: column;
+
+            input {
+                width: 90%;
+                height: 30px;
+                padding: 10px 0 10px 20px;
+                margin: 8px 0;
+                border: 0px;
+                outline-color: blue;
+            }
+
+            button {
+                width: 120px;
+            }
+        }
+
+        .wrapper {
+            display: grid;
+            margin-top: 80px;
+            grid-template-columns: 390px;
+            justify-content: center;
+
+            .todo-card-box {
+                display: grid;
+                width: 340px;
+                height: 200px;
+                box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+                background-color: #ffff;
+                border-radius: 12px;
+                flex-direction: column;
+                padding: 2px 12px 2px 12px;
+                align-items: center;
+                justify-content: center;
+
+                margin-top: 12px;
+
+                .button-card {
+                    justify-content: flex-end;
+                    align-items: flex-end;
+
+                    .button-delete {
+                        background-color: crimson;
+                    }
+
+                    .edit-button {
+                        background-color: blue;
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 391px) {
+    .todo-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-top: 120px;
+        justify-content: center;
+
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5px 5px;
+            margin: 0 auto;
+            flex-direction: column;
+
+            input {
+                width: 90%;
+                height: 30px;
+                padding: 10px 0 10px 20px;
+                margin: 8px 0;
+                border: 0px;
+                outline-color: blue;
+            }
+
+            button {
+                width: 120px;
+            }
+        }
+
+        .wrapper {
+            display: grid;
+            margin-top: 80px;
+            grid-template-columns: 390px;
+            justify-content: center;
+
+            .todo-card-box {
+                display: grid;
+                width: 340px;
+                height: 200px;
+                box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+                background-color: #ffff;
+                border-radius: 12px;
+                flex-direction: column;
+                padding: 2px 12px 2px 12px;
+                align-items: center;
+                justify-content: center;
+
+                margin-top: 12px;
+
+                .button-card {
+                    justify-content: flex-end;
+                    align-items: flex-end;
+
+                    .button-delete {
+                        background-color: crimson;
+                    }
+
+                    .edit-button {
+                        background-color: blue;
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 415px) {
+    .todo-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-top: 120px;
+        justify-content: center;
+
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5px 5px;
+            margin: 0 auto;
+            flex-direction: column;
+
+            input {
+                width: 90%;
+                height: 30px;
+                padding: 10px 0 10px 20px;
+                margin: 8px 0;
+                border: 0px;
+                outline-color: blue;
+            }
+
+            button {
+                width: 120px;
+            }
+        }
+
+        .wrapper {
+            display: grid;
+            margin-top: 80px;
+            grid-template-columns: 390px;
+            justify-content: center;
+
+            .todo-card-box {
+                display: grid;
+                width: 350px;
+                height: 200px;
+                box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+                background-color: #ffff;
+                border-radius: 12px;
+                flex-direction: column;
+                padding: 2px 12px 2px 12px;
+                align-items: center;
+                justify-content: center;
+
+                margin-top: 12px;
+
+                .button-card {
+                    justify-content: flex-end;
+                    align-items: flex-end;
+
+                    .button-delete {
+                        background-color: crimson;
+                    }
+
+                    .edit-button {
+                        background-color: blue;
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 541px) {
+    .todo-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-top: 120px;
+        justify-content: center;
+
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5px 5px;
+            margin: 0 auto;
+            flex-direction: column;
+
+            input {
+                width: 90%;
+                height: 30px;
+                padding: 10px 0 10px 20px;
+                margin: 8px 0;
+                border: 0px;
+                outline-color: blue;
+            }
+
+            button {
+                width: 120px;
+            }
+        }
+
+        .wrapper {
+            display: grid;
+            margin-top: 80px;
+            grid-template-columns: 420px;
+            justify-content: center;
+
+            .todo-card-box {
+                display: grid;
+                width: 400px;
+                height: 300px;
+                box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+                background-color: #ffff;
+                border-radius: 12px;
+                flex-direction: column;
+                padding: 2px 12px 2px 12px;
+                align-items: center;
+                justify-content: center;
+
+                margin-top: 12px;
+
+                .button-card {
+                    justify-content: flex-end;
+                    align-items: flex-end;
+
+                    .button-delete {
+                        background-color: crimson;
+                    }
+
+                    .edit-button {
+                        background-color: blue;
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 360px) {
+    .todo-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-top: 120px;
+        justify-content: center;
+
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5px 5px;
+            margin: 0 auto;
+            flex-direction: column;
+
+            input {
+                width: 90%;
+                height: 30px;
+                padding: 10px 0 10px 20px;
+                margin: 8px 0;
+                border: 0px;
+                outline-color: blue;
+            }
+
+            button {
+                width: 120px;
+            }
+        }
+
+        .wrapper {
+            display: grid;
+            margin-top: 80px;
+            grid-template-columns: 370px;
+            justify-content: center;
+
+            .todo-card-box {
+                display: grid;
+                width: 320px;
+                height: 200px;
+                box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+                background-color: #ffff;
+                border-radius: 12px;
+                flex-direction: column;
+                padding: 2px 12px 2px 12px;
+                align-items: center;
+                justify-content: center;
+
+                margin-top: 12px;
+
+                .button-card {
+                    justify-content: flex-end;
+                    align-items: flex-end;
+
+                    .button-delete {
+                        background-color: crimson;
+                    }
+
+                    .edit-button {
+                        background-color: blue;
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 281px) {
+    .todo-container {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-top: 120px;
+        justify-content: center;
+
+        #form {
+            display: flex;
+            justify-content: center;
+            padding: 5px 5px;
+            margin: 0 auto;
+            flex-direction: column;
+
+            input {
+                width: 90%;
+                height: 30px;
+                padding: 10px 0 10px 20px;
+                margin: 8px 0;
+                border: 0px;
+                outline-color: blue;
+            }
+
+            button {
+                width: 120px;
+            }
+        }
+
+        .wrapper {
+            display: grid;
+            margin-top: 80px;
+            grid-template-columns: 300px;
+            justify-content: center;
+
+            .todo-card-box {
+                display: grid;
+                width: 250px;
+                height: 200px;
+                box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+                background-color: #ffff;
+                border-radius: 12px;
+                flex-direction: column;
+                padding: 2px 12px 2px 12px;
+                align-items: center;
+                justify-content: center;
+
+                margin-top: 12px;
+
+                .button-card {
+                    flex: 1;
+                    flex-direction: row;
+
+                    button {
+                        width: 40px;
+                        height: 25px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    .button-delete {
+                        background-color: crimson;
+                    }
+
+                    .edit-button {
+                        background-color: blue;
+                    }
+
+                }
+            }
+        }
     }
 
 }

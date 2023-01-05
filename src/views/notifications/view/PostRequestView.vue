@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <input v-model="store.query" placeholder="search" />
         <h1>{{ msg.title2 }}</h1>
         <div v-if="store.isLoading">
@@ -49,9 +49,6 @@ export default defineComponent({
 
         return { store };
     },
-
-
-
 })
 
 </script>

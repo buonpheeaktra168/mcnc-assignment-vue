@@ -1,20 +1,22 @@
 <template>
   <header>
-    <div class="wrapper">
-      <nav>
-        <div>
-          <router-link to="/">{{ $t("navbar.home") }}</router-link>
-          <router-link to="/account">{{ $t("navbar.account") }}</router-link>
-          <router-link to="/about">{{ $t("navbar.about") }}</router-link>
-          <router-link to="/todo">{{ $t("navbar.todo") }}</router-link>
-          <router-link to="/login">{{ $t("navbar.login") }}</router-link>
-        </div>
-        <div class="nav-right">
-          <select class="selection" v-model="lang" @change="handleChage($event)">
+    <div class="container">
+      <nav class="navbar">
+        <div class="branding">
+          <select class="link" v-model="lang" @change="handleChage($event)">
             <option value="km">{{ $t("button.khmer") }}</option>
             <option value="en">{{ $t("button.english") }}</option>
           </select>
           <button @click="handleSignOut" v-if="isLoggedIn">{{ $t("button.signOut") }}</button>
+        </div>
+        <div class="nav-links">
+          <ul>
+            <router-link class="link" to="/">{{ $t("navbar.home") }}</router-link>
+            <router-link class="link" to="/account">{{ $t("navbar.account") }}</router-link>
+            <router-link class="link" to="/about">{{ $t("navbar.about") }}</router-link>
+            <router-link class="link" to="/todo">{{ $t("navbar.todo") }}</router-link>
+            <router-link class="link" to="/login">{{ $t("navbar.login") }}</router-link>
+          </ul>
         </div>
       </nav>
     </div>
@@ -54,78 +56,480 @@ const handleSignOut = () => {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-nav {
-  display: flex;
-  width: 100%;
-  height: 5vh;
-  margin: 0;
-  padding: 0;
-  justify-content: space-between;
-  align-items: center;
   background-color: #ffffff;
-  border-bottom: 1px solid #0a0a0a;
+  box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  margin: 0;
+
+  .link {
+    font-weight: 500;
+    padding: 0 8px;
+    transition: 0.3s color ease;
+
+    &:hover {
+      color: rgb(125, 0, 241);
+    }
+  }
+
+  nav {
+    display: flex;
+
+    .branding {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      position: relative;
+      display: flex;
+      flex: 1;
+      color: #000;
+      align-items: center;
+      justify-content: flex-end;
+
+      ul {
+        margin-right: 8px;
+
+        .link {
+          margin-right: 8px;
+          color: black;
+          text-decoration-line: none;
+        }
+
+        .link:last-child {
+          margin-right: 0;
+        }
+
+      }
+    }
+  }
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-  color: rgb(0, 0, 0);
-  font-size: 18px;
-  border-bottom: 2px solid;
-  border-bottom-color: blueviolet;
-  color: blueviolet;
+@media (max-width: 913px) {
+  header {
+    background-color: #ffffff;
+    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    margin: 0;
+
+    .link {
+      font-weight: 500;
+      font-size: 20px;
+      padding: 0 8px;
+      transition: 0.3s color ease;
+
+      &:hover {
+        color: rgb(125, 0, 241);
+      }
+    }
+
+    nav {
+      display: flex;
+
+      .branding {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links {
+        position: relative;
+        display: flex;
+        flex: 1;
+        color: #000;
+        align-items: center;
+        justify-content: flex-end;
+
+        ul {
+          margin-right: 8px;
+
+          .link {
+            margin-right: 8px;
+            color: black;
+            text-decoration-line: none;
+          }
+
+          .link:last-child {
+            margin-right: 0;
+          }
+
+        }
+      }
+    }
+  }
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-  font-size: 18px;
-  margin-right: 5px;
+@media (max-width: 821px) {
+  header {
+    background-color: #ffffff;
+    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    margin: 0;
+
+    .link {
+      font-weight: 500;
+      font-size: 20px;
+      padding: 0 8px;
+      transition: 0.3s color ease;
+
+      &:hover {
+        color: rgb(125, 0, 241);
+      }
+    }
+
+    nav {
+      display: flex;
+
+      .branding {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links {
+        position: relative;
+        display: flex;
+        flex: 1;
+        color: #000;
+        align-items: center;
+        justify-content: flex-end;
+
+        ul {
+          margin-right: 8px;
+
+          .link {
+            margin-right: 8px;
+            color: black;
+            text-decoration-line: none;
+          }
+
+          .link:last-child {
+            margin-right: 0;
+          }
+
+        }
+      }
+    }
+  }
 }
 
-nav a:hover {
-  display: inline-block;
-  padding: 0 1rem;
-  text-decoration: none;
-  font-size: 18px;
-  margin-right: 5px;
-  color: blueviolet;
+@media (max-width: 376px) {
+  header {
+    background-color: #ffffff;
+    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    margin: 0;
+
+    .link {
+      transition: 0.3s color ease;
+
+      &:hover {
+        color: rgb(125, 0, 241);
+      }
+    }
+
+    nav {
+      display: flex;
+      margin-left: -20px;
+      flex-direction: column;
+
+
+      .branding {
+        display: flex;
+        margin-left: 20px;
+
+      }
+
+      .nav-links {
+        position: relative;
+
+
+        color: #000;
+        justify-content: center;
+        margin: -12px;
+
+        ul {
+          margin-right: 8px;
+
+          .link {
+            margin-right: 8px;
+            color: black;
+            text-decoration-line: none;
+          }
+
+          .link:last-child {
+            margin-right: 0;
+          }
+
+        }
+      }
+    }
+  }
 }
 
-nav a:first-of-type {
-  border: 0;
+@media (max-width: 541px) {
+  header {
+    background-color: #ffffff;
+    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    margin: 0;
+
+
+    .link {
+      transition: 0.3s color ease;
+
+      &:hover {
+        color: rgb(125, 0, 241);
+      }
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+
+      .branding {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+
+      }
+
+      .nav-links {
+        position: relative;
+
+
+        color: #000;
+        justify-content: center;
+
+        ul {
+          margin-right: 8px;
+
+          .link {
+            margin-right: 8px;
+            color: black;
+            text-decoration-line: none;
+          }
+
+          .link:last-child {
+            margin-right: 0;
+          }
+
+        }
+      }
+    }
+  }
+}
+@media (max-width: 415px) {
+  header {
+    background-color: #ffffff;
+    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    margin: 0;
+
+
+    .link {
+      transition: 0.3s color ease;
+
+      &:hover {
+        color: rgb(125, 0, 241);
+      }
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+
+      .branding {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+
+      }
+
+      .nav-links {
+        position: relative;
+
+
+        color: #000;
+        justify-content: center;
+
+        ul {
+          margin-right: 8px;
+
+          .link {
+            margin-right: 8px;
+            color: black;
+            text-decoration-line: none;
+          }
+
+          .link:last-child {
+            margin-right: 0;
+          }
+
+        }
+      }
+    }
+  }
+}
+@media (max-width: 394px) {
+  header {
+    background-color: #ffffff;
+    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    margin: 0;
+
+    .link {
+      transition: 0.3s color ease;
+
+      &:hover {
+        color: rgb(125, 0, 241);
+      }
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .branding {
+        display: flex;
+        margin-left: 20px;
+
+      }
+
+      .nav-links {
+        position: relative;
+
+
+        color: #000;
+        justify-content: center;
+        margin: -12px;
+
+        ul {
+          margin-right: 8px;
+
+          .link {
+            margin-right: 8px;
+            color: black;
+            text-decoration-line: none;
+          }
+
+          .link:last-child {
+            margin-right: 0;
+          }
+
+        }
+      }
+    }
+  }
 }
 
-.selection {
-  width: 80px;
-  height: 30px;
-  border: 0px;
-  margin-right: 12px;
-  background-color: none;
-  color: #ffffff;
-  font-weight: bold;
-  outline: none;
-  background: #04AA6D;
+@media (max-width: 360px) {
+  header {
+    background-color: #ffffff;
+    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    margin: 0;
+
+    .link {
+      transition: 0.3s color ease;
+
+      &:hover {
+        color: rgb(125, 0, 241);
+      }
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .branding {
+        display: flex;
+        margin-left: 20px;
+        margin-bottom: 12px;
+
+      }
+
+      .nav-links {
+        position: relative;
+
+
+        color: #000;
+        justify-content: center;
+        margin: -14px;
+
+        ul {
+          margin-right: 0px;
+
+          .link {
+            margin-right: 8px;
+            color: black;
+            text-decoration-line: none;
+          }
+
+          .link:last-child {
+            margin-right: 0;
+          }
+
+        }
+      }
+    }
+  }
 }
 
-button {
-  display: flex;
-  height: 30px;
-  width: 120px;
-  justify-content: center;
-  align-items: center;
-  margin: 0px;
-}
+@media (max-width: 281px) {
+  header {
+    background-color: #ffffff;
+    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    margin: 0;
 
-.nav-right {
-  display: flex;
-  flex-direction: row;
+    .link {
+      transition: 0.3s color ease;
+
+      &:hover {
+        color: rgb(125, 0, 241);
+      }
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .branding {
+        display: flex;
+        margin-left: 20px;
+        margin-bottom: 12px;
+
+      }
+
+      .nav-links {
+        position: relative;
+
+
+        color: #000;
+        justify-content: center;
+        margin: -14px;
+
+        ul {
+          margin-right: 0px;
+
+          .link {
+            font-size: 13px;
+            margin-right: 0px;
+            color: black;
+            text-decoration-line: none;
+          }
+
+          .link:last-child {
+            margin-right: 0;
+          }
+
+        }
+      }
+    }
+  }
 }
 </style>

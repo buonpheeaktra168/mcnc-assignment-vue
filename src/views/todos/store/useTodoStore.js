@@ -43,8 +43,12 @@ export const useTodoStore = defineStore('todo', {
                     description: description,
                 }
                 const q = query(collection(db, 'todos'))
-                const docRef = await addDoc(q, docObj);
-                this.todos.push({ id: docRef.id, ...docObj });
+                if (docObj.title) {
+                    const docRef = await addDoc(q, docObj);
+                    this.todos.push({ id: docRef.id, ...docObj });
+                } else {
+                    alert('Your title field is empty')
+                }
             } catch (error) {
                 console.log(error);
             } finally {
@@ -87,6 +91,7 @@ export const useTodoStore = defineStore('todo', {
                     title: newTodo.title,
                     description: newTodo.description
                 })
+
             } catch (error) {
                 console.log(error)
             } finally {
