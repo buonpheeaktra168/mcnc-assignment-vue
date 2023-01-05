@@ -3,10 +3,10 @@
         <button v-for="tab in tabs" :key="tab" @click="component = tab">
             {{ tab }}
         </button>
-        <KeepAlive>
-            <component :is="component" />
-        </KeepAlive>
     </div>
+    <KeepAlive>
+        <component :is="component" />
+    </KeepAlive>
 </template>
 
 <script>
@@ -16,11 +16,11 @@ import FetchUser from '../../notifications/view/FetchUserFromStoreView.vue';
 import PostRequestView from '../../notifications/view/PostRequestView.vue';
 
 export default defineComponent({
-    components: { Notification, FetchUser, PostRequestView },
+    components: { PostRequestView, Notification, FetchUser },
     data() {
         return {
-            tabs: ["Notification", "FetchUser", "PostRequestView"],
-            component: "Notification"
+            tabs: ["PostRequestView", "Notification", "FetchUser"],
+            component: "PostRequestView"
         }
     }
 })

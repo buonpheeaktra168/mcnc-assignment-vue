@@ -38,7 +38,6 @@ export default {
     this.getData()
   },
   setup() {
-
     const search = ref('')
     const userInfo = reactive(["Mota", "Mato", "Jonh", "Coner", "Ronaldo", "Messi"])
 

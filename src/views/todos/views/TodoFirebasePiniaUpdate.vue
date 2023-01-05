@@ -7,7 +7,7 @@
             <form @submit.prevent="handleUpdate" id="form">
                 <input type="text" v-model.trimp="todoRef.title" />
                 <input type="text" v-model.trimp="todoRef.description" />
-                <button type="submit" :disabled="store.isLoading">Update</button>
+                <button type="submit" :disabled="store.isLoading">{{ $t('button.update') }}</button>
             </form>
         </div>
     </div>
@@ -22,16 +22,20 @@ import LoadingSpinner from '../../../components/LoadingSpinner.vue';
 const route = useRoute()
 const router = useRouter()
 const store = useTodoStore()
-const todoRef = ref({ title: '', description: '' })
+const todoRef = ref({ id: '', title: '', description: '' })
 
 onMounted(async () => {
     todoRef.value = await store.getTodoById(route.params.id)
-    todoRef.value;
+    todoRef.value.id = route.params.id
 });
 
 const handleUpdate = async () => {
-    await store.updateTodo(route.params.id, todoRef.value)
-    router.replace({ name: 'todoFirebasePinia' })
+    if (todoRef.value.title !== '') {
+        await store.updateTodo(todoRef.value)
+        router.push('/todoFirebasePinia')
+    } else {
+        return alert('Empty titlle')
+    }
 }
 </script>
 

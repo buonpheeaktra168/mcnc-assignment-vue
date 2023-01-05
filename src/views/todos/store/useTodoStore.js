@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { db } from "../../../../utils/firebase";
-import { collection, doc, addDoc, getDocs, query, deleteDoc, getDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, addDoc, setDoc, getDocs, query, deleteDoc, getDoc, updateDoc, writeBatch } from "firebase/firestore";
 
 export const useTodoStore = defineStore('todo', {
     state: () => ({
@@ -43,8 +43,12 @@ export const useTodoStore = defineStore('todo', {
                     description: description,
                 }
                 const q = query(collection(db, 'todos'))
-                const docRef = await addDoc(q, docObj);
-                this.todos.push({ id: docRef.id, ...docObj });
+                if (docObj.title) {
+                    const docRef = await addDoc(q, docObj);
+                    this.todos.push({ id: docRef.id, ...docObj });
+                } else {
+                    alert('Your title field is empty')
+                }
             } catch (error) {
                 console.log(error);
             } finally {
@@ -66,7 +70,7 @@ export const useTodoStore = defineStore('todo', {
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
-                    console.log("Document data:", docSnap.data());
+                    // console.log("Document data:", docSnap.data());
                     return docSnap.data()
                 } else {
                     // doc.data() will be undefined in this case
@@ -79,27 +83,17 @@ export const useTodoStore = defineStore('todo', {
             }
         },
 
-        async updateTodo(id, title, description) {
+        async updateTodo(newTodo) {
             this.loading = true
             try {
-                const docRef = doc(db, 'todos', id);
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    console.log("Document data:", docSnap.data());
-                    await updateDoc(docRef, {
-                        title: title,
-                        description: description
-                    });
-                    this.todos = this.todos.map((item) =>
-                        item.id === id ? { ...item, title: title, description: description } : item
-                    );
-                } else {
-                    // doc.data() will be undefined in this case
-                    console.log("No such document!");
-                } throw new Error("Error")
+                const docRef = doc(db, 'todos', newTodo.id);
+                await setDoc(docRef, {
+                    title: newTodo.title,
+                    description: newTodo.description
+                })
 
             } catch (error) {
-                console.log(error.message)
+                console.log(error)
             } finally {
                 this.loading = false
             }
