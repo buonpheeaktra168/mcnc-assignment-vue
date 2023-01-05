@@ -46,6 +46,7 @@ export default defineComponent({
     }
 
 }
+
 @media (max-width: 281px) {
     .container {
         display: flex;
@@ -68,7 +69,7 @@ export default defineComponent({
         justify-content: center;
 
         .button {
-            padding: 0px ;
+            padding: 0px;
         }
     }
 }
@@ -85,6 +86,7 @@ export default defineComponent({
         }
     }
 }
+
 @media (max-width: 361px) {
     .container {
         display: flex;

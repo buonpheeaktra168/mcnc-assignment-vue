@@ -7,7 +7,9 @@
         <div v-if="props.phoneNumber">Phone Number: {{ props.phoneNumber }}</div>
         <div v-if="props.userId">UserId: {{ props.userId }}</div>
         <div v-if="props.id">Id: {{ props.id }}</div>
-        <div v-if="props.title">title: {{ props.title }}</div>
+        <div v-if="props.title">
+            <h4>title: {{ props.title }}</h4>
+        </div>
         <div v-if="props.body">body: {{ props.body }}</div>
     </div>
 </template>
@@ -41,6 +43,7 @@ const props = defineProps({
 }
 
 .user-card:hover {
-    background-color:#b9b9b9;
+    background-color: #b9b9b9;
+
 }
 </style>

@@ -6,7 +6,7 @@
 
 <script>
 import ComponentC from './ComponentC.vue';
-import { useUserStore } from '../../../store/user';
+import { useUserStore } from '../../../store/useUserStore';
 export default {
     components: {
         ComponentC,

@@ -107,7 +107,7 @@ header {
   }
 }
 
-@media (max-width: 913px) {
+@media (min-width: 913px) {
   header {
     background-color: #ffffff;
     box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
@@ -160,7 +160,7 @@ header {
   }
 }
 
-@media (max-width: 821px) {
+@media (min-width: 821px) {
   header {
     background-color: #ffffff;
     box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
@@ -213,7 +213,7 @@ header {
   }
 }
 
-@media (max-width: 376px) {
+@media (min-width: 376px) {
   header {
     background-color: #ffffff;
     box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
@@ -267,7 +267,7 @@ header {
   }
 }
 
-@media (max-width: 541px) {
+@media (min-width: 541px) {
   header {
     background-color: #ffffff;
     box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
@@ -319,58 +319,7 @@ header {
     }
   }
 }
-@media (max-width: 415px) {
-  header {
-    background-color: #ffffff;
-    box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);
-    z-index: 99;
-    margin: 0;
 
-
-    .link {
-      transition: 0.3s color ease;
-
-      &:hover {
-        color: rgb(125, 0, 241);
-      }
-    }
-
-    nav {
-      display: flex;
-      flex-direction: column;
-
-      .branding {
-        display: flex;
-        flex: 1;
-        justify-content: flex-end;
-
-      }
-
-      .nav-links {
-        position: relative;
-
-
-        color: #000;
-        justify-content: center;
-
-        ul {
-          margin-right: 8px;
-
-          .link {
-            margin-right: 8px;
-            color: black;
-            text-decoration-line: none;
-          }
-
-          .link:last-child {
-            margin-right: 0;
-          }
-
-        }
-      }
-    }
-  }
-}
 @media (max-width: 394px) {
   header {
     background-color: #ffffff;
@@ -478,7 +427,7 @@ header {
   }
 }
 
-@media (max-width: 281px) {
+@media (min-width: 275px) {
   header {
     background-color: #ffffff;
     box-shadow: 2px 6px 20px 6px rgba(0, 0, 0, 0.2);

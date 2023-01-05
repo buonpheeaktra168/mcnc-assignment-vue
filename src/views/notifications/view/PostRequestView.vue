@@ -7,7 +7,7 @@
         </div>
         <div v-else class="wrapper">
             <div v-for="data in store.isPost" :key="data.id">
-                <UserCard :id="data.id" :title="data.title" :body="data.body" />
+                <UserCard :title="data.title" :body="data.body" />
             </div>
         </div>
 
@@ -17,7 +17,7 @@
 <script>
 import { defineComponent, watchEffect } from 'vue';
 import LoadingSpinner from '../../../components/LoadingSpinner.vue';
-import { usePostStore } from '../../../store/posts';
+import { usePostStore } from '../../../store/usePostStore';
 import UserCard from '../components/UserCard.vue';
 export default defineComponent({
     components: {
@@ -43,7 +43,7 @@ export default defineComponent({
         store.fetchPosts();
         console.log(store.fetchPosts);
         watchEffect(() => {
-            store.fetchPosts(store.query)
+            store.fetchPostsQuery(store.query)
 
         })
 
@@ -77,5 +77,21 @@ label {
     display: grid;
     margin-top: 80px;
     grid-template-columns: 350px 350px 300px;
+}
+
+@media (min-width: 300px) {
+    .wrapper {
+        display: grid;
+        margin-top: 80px;
+        grid-template-columns: 350px;
+    }
+}
+
+@media (min-width: 500px) {
+    .wrapper {
+        display: grid;
+        margin-top: 80px;
+        grid-template-columns: 260px 260px;
+    }
 }
 </style>
