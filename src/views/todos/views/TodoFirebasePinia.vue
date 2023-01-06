@@ -51,7 +51,6 @@ const handleSubmit = async () => {
     description.value = ''
 }
 
-
 const todoDetail = (id) => {
     router.push({ name: 'todoDetail', params: { id: id } })
 }

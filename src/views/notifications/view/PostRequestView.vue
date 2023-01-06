@@ -1,13 +1,15 @@
 <template>
     <div class="container">
         <input v-model="store.query" placeholder="search" />
+        <button @click="handleFillter">Completd</button>
+
         <h1>{{ msg.title2 }}</h1>
         <div v-if="store.isLoading">
             <LoadingSpinner title="Loading..." />
         </div>
         <div v-else class="wrapper">
             <div v-for="data in store.isPost" :key="data.id">
-                <UserCard :title="data.title" :body="data.body" />
+                <UserCard :id="data.id" :title="data.title.toUpperCase()" :status="data.completed" />
             </div>
         </div>
 
@@ -15,9 +17,9 @@
 </template>
 
 <script>
-import { defineComponent, watchEffect } from 'vue';
-import LoadingSpinner from '../../../components/LoadingSpinner.vue';
-import { usePostStore } from '../../../store/usePostStore';
+import { defineComponent, watchEffect, ref } from 'vue';
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
+import { usePostStore } from '@/store/usePostStore';
 import UserCard from '../components/UserCard.vue';
 export default defineComponent({
     components: {
@@ -38,16 +40,24 @@ export default defineComponent({
             listData: []
         };
     },
+
+
     setup() {
         const store = usePostStore();
+        const filter = store.isPost
+        const filterCompleted = ref(true)
         store.fetchPosts();
-        console.log(store.fetchPosts);
+        console.log(store.isPost)
         watchEffect(() => {
             store.fetchPostsQuery(store.query)
 
         })
 
-        return { store };
+        function handleFillter() {
+            
+        }
+
+        return { store, handleFillter, filter, filterCompleted };
     },
 })
 

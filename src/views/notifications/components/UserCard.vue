@@ -7,10 +7,23 @@
         <div v-if="props.phoneNumber">Phone Number: {{ props.phoneNumber }}</div>
         <div v-if="props.userId">UserId: {{ props.userId }}</div>
         <div v-if="props.id">Id: {{ props.id }}</div>
-        <div v-if="props.title">
-            <h4>title: {{ props.title }}</h4>
+        <div v-if="props.title">title: {{ props.title }} </div>
+        <div>
+            <div v-if="props.status === true" class="main-status">
+                Status:
+                <div class="status-completed">
+                    Completed
+                </div>
+            </div>
+            <div v-if="props.status === false" class="main-status">
+                Status:
+                <div class="status-incompleted">
+                    Incompleted
+                </div>
+            </div>
         </div>
         <div v-if="props.body">body: {{ props.body }}</div>
+        <slot />
     </div>
 </template>
 
@@ -26,6 +39,7 @@ const props = defineProps({
     id: Number,
     title: String,
     body: String,
+    status: Boolean,
 })
 </script>
 
@@ -45,5 +59,20 @@ const props = defineProps({
 .user-card:hover {
     background-color: #b9b9b9;
 
+}
+
+.main-status {
+    display: flex;
+    flex-direction: row;
+}
+
+.status-completed {
+    color: rgb(0, 47, 255);
+    margin-left: 12px;
+}
+
+.status-incompleted {
+    color: red;
+    margin-left: 12px;
 }
 </style>
